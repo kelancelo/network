@@ -25,9 +25,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ.get('SECRET_KEY', default='fuck')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DJANGO_DEBUG', True)
+DEBUG = "DEBUG" not in os.environ
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [".railway.app", "127.0.0.1"]
+
+CSRF_TRUSTED_ORIGINS = ["https://*.railway.app"]
 
 # RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
 # if RENDER_EXTERNAL_HOSTNAME:
@@ -146,7 +148,7 @@ STATIC_URL = '/static/'
 # Tell Django to copy statics to the `staticfiles` directory
 # in your application directory on Render.
 if not DEBUG:    
-    STATIC_ROOT = BASE_DIR / 'staticfiles'
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
     # Turn on WhiteNoise storage backend that takes care of compressing static files
     # and creating unique names for each version so they can safely be cached forever.
     STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'

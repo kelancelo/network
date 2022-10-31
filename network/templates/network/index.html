@@ -4,11 +4,12 @@
 
 {% block body %}
 <h1 class="fs-2">All Posts</h1>
-<form action="{% url 'index' %}" method="post" class="mb-5">
-  {% csrf_token %}
-  <textarea name="body" rows="2" placeholder="Write a new post..." class="form-control mb-2" required></textarea>
-  <input type="submit" value="Post" class="btn btn-primary" />
-</form>
-
+{% if user.is_authenticated %}
+  <form action="{% url 'index' %}" method="post" class="mb-5">
+    {% csrf_token %}
+    <textarea name="body" rows="2" placeholder="Write a new post..." class="form-control mb-2" required></textarea>
+    <input type="submit" value="Post" class="btn btn-primary" />
+  </form>
+{% endif %}
 {% include "network/posts_template.html" %}
 {% endblock %}
