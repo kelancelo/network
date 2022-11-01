@@ -1,3 +1,4 @@
 db.sqlite3
 dump.sql
 *.env
+pgdump
