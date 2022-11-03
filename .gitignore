@@ -2,4 +2,4 @@ db.sqlite3
 dump.sql
 *.env
 pgdump
-**__pycache__/
+staticfiles/
