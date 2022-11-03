@@ -3,4 +3,7 @@ dump.sql
 *.env
 pgdump
 # staticfiles/
-# **__pycache__/
+**__pycache__/
+docker-compose.yml
+Procfile
+runtime.txt
